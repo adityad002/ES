@@ -109,6 +109,32 @@
   box-shadow: 0 0 0 2px rgba(164, 53, 240, 0.2);
 }
 
+/* Prevent autofill styling */
+.login-input:-webkit-autofill,
+.login-input:-webkit-autofill:hover,
+.login-input:-webkit-autofill:focus,
+.login-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #1c1d1f !important;
+  background-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox autofill prevention */
+.login-input:-moz-autofill {
+  background-color: white !important;
+  color: #1c1d1f !important;
+}
+
+/* Additional autofill prevention */
+input[type="email"]:not(:focus):not(:active):invalid {
+  box-shadow: none;
+}
+
+input[type="password"]:not(:focus):not(:active):invalid {
+  box-shadow: none;
+}
+
 .login-button {
   padding: 0.75rem;
   font-weight: 700;
