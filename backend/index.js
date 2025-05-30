@@ -55,6 +55,15 @@ app.use('/api/subjects', subjectsRoutes);
 app.use('/api/timetable', timetableRoutes);
 app.use('/api/subject-assignments', subjectAssignmentsRoutes);
 
+// Health check endpoint for Render
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    message: 'Service is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Basic root route
 app.get('/', (req, res) => {
   res.json({

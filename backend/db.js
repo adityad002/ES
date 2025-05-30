@@ -54,11 +54,11 @@ async function setupDatabase() {
       CREATE TABLE IF NOT EXISTS settings (
         id INT PRIMARY KEY DEFAULT 1,
         periodsPerDay INT DEFAULT 8,
-        workingDays JSON DEFAULT ('["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]'),
+        workingDays JSON,
         startTime TIME DEFAULT '09:00:00',
         endTime TIME DEFAULT '16:00:00',
-        lunchBreak JSON DEFAULT ('{"enabled": true, "period": 4, "duration": 30}'),
-        shortBreaks JSON DEFAULT ('[]'),
+        lunchBreak JSON,
+        shortBreaks JSON,
         classDuration INT DEFAULT 50,
         academic_year INT DEFAULT 2023,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -142,8 +142,8 @@ async function setupDatabase() {
     if (settingsCheck.length === 0) {
       await pool.query(`
         INSERT INTO settings (id, periodsPerDay, workingDays, startTime, endTime, lunchBreak, shortBreaks, classDuration, academic_year) 
-        VALUES (1, 8, '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]', '09:00:00', '16:00:00', 
-                '{"enabled": true, "period": 4, "duration": 30}', '[]', 50, YEAR(CURDATE()))
+        VALUES (1, 8, CAST('["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]' AS JSON), '09:00:00', '16:00:00', 
+                CAST('{"enabled": true, "period": 4, "duration": 30}' AS JSON), CAST('[]' AS JSON), 50, YEAR(CURDATE()))
       `);
       
       console.log('⚙️ Default settings created');

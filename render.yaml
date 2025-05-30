@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: smart-academic-scheduler-backend
+    env: node
+    repo: https://github.com/adityad002/ES.git
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node index.js
+    envVars:
+      - key: DB_HOST
+        value: gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+      - key: DB_PORT
+        value: 4000
+      - key: DB_USER
+        value: 3nDfVgE8AiykFrg.root
+        # Consider using Render secrets for sensitive values in production
+      - key: DB_PASSWORD
+        sync: false # This will prompt you to enter it in the Render dashboard
+      - key: DB_NAME
+        value: es
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    autoDeploy: true
