@@ -25,3 +25,14 @@ services:
         value: 10000
     healthCheckPath: /api/health
     autoDeploy: true
+
+  - type: web
+    name: smart-academic-scheduler-frontend
+    env: node
+    repo: https://github.com/adityad002/ES.git
+    buildCommand: cd client && npm install && npm run build
+    startCommand: npx serve -s client/build -l $PORT
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://smart-academic-scheduler-backend.onrender.com/api
+</edits>

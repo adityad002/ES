@@ -65,7 +65,8 @@ This guide walks you through the process of deploying your Smart Academic Schedu
    - **Plan**: Free tier
 
 5. Add the following environment variable:
-   - `REACT_APP_API_URL` = (URL of your backend service, which you'll get after the backend is deployed)
+   - `REACT_APP_API_URL` = https://your-backend-service-name.onrender.com/api
+   (Replace "your-backend-service-name" with the actual name of your backend service)
 
 6. Click "Create Web Service"
 
