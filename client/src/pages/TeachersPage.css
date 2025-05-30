@@ -1,0 +1,86 @@
+.teachers-page {
+  padding: 20px;
+}
+
+.search-box {
+  position: relative;
+  max-width: 500px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+/* Badge styles for expertise tags */
+.badge {
+  font-weight: 500;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.badge-info {
+  background-color: var(--info-color);
+}
+
+/* Modal styles */
+.modal-title {
+  font-weight: 600;
+}
+
+/* Add styles for the action buttons */
+.teacher-row .action-buttons {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.teacher-row:hover .action-buttons {
+  opacity: 1;
+}
+
+.action-buttons .btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.action-buttons .btn-link:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .teachers-page {
+    padding: 15px;
+  }
+  
+  .text-md-end {
+    text-align: left !important;
+    margin-top: 15px;
+  }
+  
+  .search-box {
+    max-width: 100%;
+  }
+} 

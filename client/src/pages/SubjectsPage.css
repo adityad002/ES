@@ -1,0 +1,289 @@
+.subjects-page {
+  padding: 20px;
+}
+
+.subjects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  max-width: 400px;
+}
+
+.subject-table {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subject-table th {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.subject-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.subject-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  color: var(--warning-color);
+  border-color: var(--warning-color);
+  background-color: transparent;
+}
+
+.btn-edit:hover {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.btn-delete {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+  background-color: transparent;
+}
+
+.btn-delete:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-add {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.btn-add:hover {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.modal-footer .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.no-subjects {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.search-box {
+  position: relative;
+  max-width: 500px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+/* Style for subject code */
+td:nth-child(2) {
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Badge styles */
+.badge {
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+/* Style for hours per week */
+td:nth-child(5) {
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Style for semester */
+td:nth-child(4) {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .subjects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .subjects-page {
+    padding: 15px;
+  }
+  
+  .text-md-end {
+    text-align: left !important;
+    margin-top: 15px;
+  }
+  
+  .search-box {
+    max-width: 100%;
+  }
+}
+
+/* Add styles for lab subjects */
+.lab-icon {
+  font-size: 0.7rem;
+  margin-bottom: 1px;
+  color: #17a2b8;
+}
+
+.code-badge .lab-icon {
+  color: #0c7d91;
+}
+
+.lab-reference {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #6c757d;
+  color: white;
+  display: inline-block;
+}
+
+/* Style for tabs */
+.nav-tabs .nav-link {
+  color: #495057;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.nav-tabs .nav-link.active {
+  color: #007bff;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+  font-weight: 600;
+}
+
+/* Add styles for the code badge */
+.code-badge {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Style for semester badge */
+.semester-badge {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  min-width: 30px;
+}
+
+/* Improved styling for subject rows */
+.subject-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Styles for action buttons - always visible */
+.subject-row .action-buttons {
+  display: flex;
+  gap: 8px;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Add styles for the action buttons */
+.subject-row .action-buttons .btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.subject-row .action-buttons .btn-link:hover {
+  transform: scale(1.2);
+}
+
+/* Compact button styling for table actions */
+.action-buttons .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-buttons .btn svg {
+  margin-right: 4px;
+  font-size: 0.9rem;
+}
+
+/* Responsive styles for action buttons */
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
+
+/* Other subject-specific styles */ 

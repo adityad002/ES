@@ -1,0 +1,196 @@
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+  margin: 0;
+  /* Ensure no margin or padding is affecting the full-height display */
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.login-container {
+  max-width: 380px;
+  padding: 0 1rem;
+}
+
+.login-form-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.login-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eaeaea;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1d1f;
+  margin-bottom: 1.5rem;
+}
+
+/* Social login buttons */
+.social-login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0;
+  border-radius: 4px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #1c1d1f;
+  border: 1px solid #1c1d1f;
+  transition: all 0.2s;
+}
+
+.social-login-button:hover {
+  background-color: #f7f9fa;
+}
+
+.social-icon {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #6a6f73;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #d1d7dc;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+
+/* Form styling */
+.login-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #d1d7dc;
+  border-radius: 4px;
+}
+
+.login-input:focus {
+  border-color: #a435f0;
+  box-shadow: 0 0 0 2px rgba(164, 53, 240, 0.2);
+}
+
+.login-button {
+  padding: 0.75rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  background-color: #a435f0;
+  color: #fff;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #8710d8;
+}
+
+.login-button:disabled {
+  background-color: #a435f0;
+  opacity: 0.65;
+}
+
+/* Forgot password and footer */
+.forgot-password {
+  margin-top: 1rem;
+}
+
+.forgot-password a {
+  color: #5624d0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.login-footer {
+  border-top: 1px solid #d1d7dc;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: #5624d0;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.demo-credentials {
+  margin-top: 1rem;
+  color: #6a6f73;
+}
+
+/* Back to login button */
+.back-to-login {
+  color: #5624d0;
+  text-decoration: none;
+  padding: 0;
+  font-weight: 500;
+}
+
+.back-to-login:hover {
+  color: #401b9c;
+  text-decoration: underline;
+}
+
+.terms-text {
+  color: #6a6f73;
+  margin-top: 1rem;
+}
+
+@media (max-width: 576px) {
+  .login-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .login-form-wrapper {
+    padding: 1.5rem;
+  }
+} 

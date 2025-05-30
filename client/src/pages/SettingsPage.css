@@ -1,0 +1,83 @@
+.settings-page {
+  padding: 20px;
+}
+
+.working-day-checkbox {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+/* Style for form inputs */
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+/* Style for switches */
+.form-switch .form-check-input:checked {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.form-switch .form-check-input:focus {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25);
+}
+
+/* Save button */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 15px;
+  }
+  
+  .working-day-checkbox {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+/* Add these styles for the short breaks section */
+.short-breaks-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.short-breaks-table td {
+  vertical-align: middle;
+}
+
+.short-breaks-table .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Add a nice hover effect to table rows */
+.short-breaks-table tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+} 
