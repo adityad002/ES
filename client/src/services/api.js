@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+// Debug environment variables
+console.log('API Configuration Debug:');
+console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+console.log('Final baseURL:', process.env.REACT_APP_API_URL || '/api');
+
 // Create an axios instance with default config
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || '/api',
@@ -11,6 +16,7 @@ const api = axios.create({
 // Add request interceptor to add auth token to requests
 api.interceptors.request.use(
   (config) => {
+    console.log('Making API request to:', config.baseURL + config.url);
     const token = localStorage.getItem('auth_token');
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
@@ -25,6 +31,9 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error('API Error:', error.message);
+    console.error('Request URL:', error.config?.url);
+    console.error('Base URL:', error.config?.baseURL);
+    console.error('Full URL:', (error.config?.baseURL || '') + (error.config?.url || ''));
     
     if (error.response && error.response.status === 401) {
       // Handle unauthorized error (e.g., token expired)
