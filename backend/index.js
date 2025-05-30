@@ -34,6 +34,16 @@ process.on('unhandledRejection', (reason, promise) => {
   // Keep the process running instead of crashing
 });
 
+// Add request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  console.log('Request headers:', req.headers);
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log('Request body:', req.body);
+  }
+  next();
+});
+
 // Test database connection
 testConnection()
   .then(connected => {
@@ -60,7 +70,41 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'healthy',
     message: 'Service is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    port: process.env.PORT || 3001,
+    database: {
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      name: process.env.DB_NAME
+    }
+  });
+});
+
+// Debug endpoint to list all routes
+app.get('/api/debug/routes', (req, res) => {
+  const routes = [];
+  app._router.stack.forEach((middleware) => {
+    if (middleware.route) {
+      routes.push({
+        path: middleware.route.path,
+        methods: Object.keys(middleware.route.methods)
+      });
+    } else if (middleware.name === 'router') {
+      middleware.handle.stack.forEach((handler) => {
+        if (handler.route) {
+          routes.push({
+            path: handler.route.path,
+            methods: Object.keys(handler.route.methods)
+          });
+        }
+      });
+    }
+  });
+  res.json({
+    message: 'Available routes',
+    routes: routes,
+    totalRoutes: routes.length
   });
 });
 
@@ -75,26 +119,51 @@ app.get('/', (req, res) => {
 
 // Handle 404 errors
 app.use((req, res) => {
+  console.log(`404 Error: ${req.method} ${req.url} not found`);
   res.status(404).json({
     success: false,
-    message: 'Endpoint not found'
+    message: `Endpoint not found: ${req.method} ${req.url}`,
+    availableEndpoints: [
+      'GET /',
+      'GET /api/health',
+      'GET /api/debug/routes',
+      'POST /api/auth/login',
+      'GET /api/auth/me',
+      'GET /api/settings',
+      'GET /api/teachers',
+      'GET /api/subjects',
+      'GET /api/timetable',
+      'GET /api/subject-assignments'
+    ]
   });
 });
 
 // Global error handler
 app.use((err, req, res, next) => {
   console.error('Server error:', err);
+  console.error('Error stack:', err.stack);
   res.status(500).json({
     success: false,
     message: 'Server error',
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    error: err.message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+    timestamp: new Date().toISOString()
   });
 });
 
 // Start server
 const PORT = process.env.PORT || 3001;
 console.log(`Attempting to start server on port ${PORT}`);
-app.listen(PORT, () => {
+console.log('Environment variables:');
+console.log(`- NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`- DB_HOST: ${process.env.DB_HOST}`);
+console.log(`- DB_PORT: ${process.env.DB_PORT}`);
+console.log(`- DB_NAME: ${process.env.DB_NAME}`);
+console.log(`- JWT_SECRET: ${process.env.JWT_SECRET ? 'Set' : 'Not set'}`);
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API available at http://localhost:${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Debug routes: http://localhost:${PORT}/api/debug/routes`);
 });
